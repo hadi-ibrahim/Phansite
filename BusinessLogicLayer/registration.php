@@ -12,11 +12,7 @@ function SignIn($Username , $Password) {
   $user = RepoUser::Login($Username, $Password);
   if(!isset($user))
   echo "<script type='text/javascript'>
-  alert('please check entered values')
+  alert('Login failed. Try again')
   </script>";
   return $user;
 }
-
-//  demonstration:
-// $user = RepoUser::Login("rooronoa", "password");
-// echo $user['username'];

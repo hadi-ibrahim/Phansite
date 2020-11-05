@@ -1,5 +1,5 @@
 <?php
-include('../BusinessLogicLayer/registration.php');
+include('../../BusinessLogicLayer/registration.php');
 
 if(isset($_POST))
 {

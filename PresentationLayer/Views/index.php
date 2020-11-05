@@ -99,10 +99,10 @@ session_start();
     }
     body {
       background: #af0404; /* fallback for old browsers */
-      background: -webkit-linear-gradient(right, #af0404, #ff0000);
-      background: -moz-linear-gradient(right, #af0404, #ff0000);
-      background: -o-linear-gradient(right, #af0404, #ff0000);
-      background: linear-gradient(to left, #af0404, #ff0000);
+      background: -webkit-linear-gradient(right, #af0404, #FF0033);
+      background: -moz-linear-gradient(right, #af0404, #FF0033);
+      background: -o-linear-gradient(right, #af0404, #FF0033);
+      background: linear-gradient(to left, #af0404, #FF0033);
       font-family: "Roboto", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;

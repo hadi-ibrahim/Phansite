@@ -1,5 +1,5 @@
 <?php
-include('../BusinessLogicLayer/registration.php');
+include('../../BusinessLogicLayer/registration.php');
 global $Username;
 global $Password;
 if(isset($_POST))
