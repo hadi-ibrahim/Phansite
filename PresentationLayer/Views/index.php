@@ -110,6 +110,10 @@ session_start();
     </style>
   </head>
   <body>
+    <!-- <?php
+    if (isset($_SESSION['user']))
+      echo "welcome" . $_SESSION['user']['username'];
+    ?> -->
 <div class="login-page">
   <div class="form">
     <form class="register-form" method="POST" action="SignUp.php">
@@ -129,6 +133,9 @@ session_start();
     </form>
   </div>
 </div>
+<!-- <form action ="logout.php">
+  <button value ="submit"> logout </button>
+</form> -->
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
