@@ -29,11 +29,17 @@ class RepoUser {
       return NULL;
   }
 
-  public static function UpdatePicture($user)
+  public static function Update($user)
   {
       $Conn = GetConnection();
       $Stmt = "UPDATE user SET picPath = '"
         . $user['picPath']
+        . "', isVerified='"
+        . $user['isVerified']
+        . "', isAdmin='"
+        . $user['isAdmin']
+        . "', username='"
+        . $user['username']
         . "' WHERE id= " . $user['id'];
 
         echo $Stmt;

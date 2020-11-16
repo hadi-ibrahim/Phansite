@@ -1,4 +1,4 @@
-<?php // TODO: implement login using AJAX ?>
+<?php // TODO: implement profile lookup using AJAX ?>
 <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

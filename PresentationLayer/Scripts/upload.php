@@ -1,7 +1,10 @@
 <?php
 include('../../BusinessLogicLayer/profileManagement.php');
 
+
 $target_dir = "../Assets/img/profilePics/";
+if($_SESSION['user']['picPath']!= NULL)
+  $oldPicture= $target_dir . $_SESSION['user']['picPath'];
 $fullFileName =explode(".",$_FILES["fileToUpload"]["name"]);
 $fullFileName[0]= $_SESSION['user']['username'];
 $_FILES["fileToUpload"]["name"] = implode(".", $fullFileName);
@@ -43,7 +46,8 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    setProfilePicture($_SESSION['user'], $_FILES["fileToUpload"]["name"] );
+    SetProfilePicture($_SESSION['user'], $_FILES["fileToUpload"]["name"]);
+    unlink($oldPicture);
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
