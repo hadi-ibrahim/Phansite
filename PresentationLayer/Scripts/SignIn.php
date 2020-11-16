@@ -11,4 +11,8 @@ if(isset($_POST))
       alert('Sign in successful!')
       </script>";
 }
+
+header("Location: ../Views/index.php");
+exit();
+
 ?>

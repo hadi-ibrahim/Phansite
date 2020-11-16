@@ -1,9 +1,9 @@
-.rounded-circle .right-shadow {
+.rounded-circle.right-shadow {
   -moz-box-shadow: 15px 15px 5px #ffffff;
   -webkit-box-shadow: 15px 15px 5px #ffffff;
   box-shadow: 15px 15px 2px #ffffff;
 }
-.rounded-circle .left-shadow {
+.rounded-circle.left-shadow {
   -moz-box-shadow: 15px 15px 5px #ffffff;
   -webkit-box-shadow: 15px 15px 5px #ffffff;
   box-shadow: -15px 15px 2px #ffffff;

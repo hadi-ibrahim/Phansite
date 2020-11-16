@@ -29,20 +29,20 @@ session_start();
                     else{
                     echo '<div class="dropdown">';
                       if($_SESSION['user']['picPath'] != NULL)
-                            echo '<img class= "profile" src="../Assets/img/' . $_SESSION['user']['picPath'] . '"/>';
+                            echo '<img class= "profile" src="../Assets/img/profilePics/' . $_SESSION['user']['picPath'] . '"/>';
                       else
-                            echo '<img class= "profile" src="../Assets/img/profile.png"/>';
-                            echo '
-                            <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-                              . $_SESSION['user']['username'] . '
-                            </a>
+                            echo '<img class= "profile" src="../Assets/img/profilePics/profile.png"/>';
+                      echo '
+                      <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+                        . $_SESSION['user']['username'] . '
+                      </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="logout.php">Logout</a>
-                              <a class="dropdown-item" href="#">View Profile</a>
-                            </div>
-                          </div>';
-                        }
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="../Scripts/logout.php">Logout</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#profileModal">View Profile</a>
+                      </div>
+                    </div>';
+                      }
                     ?>
                 </ul>
             </div>
@@ -108,9 +108,10 @@ session_start();
         </div>
     </footer>
     <?php include "popup.php" ?>
+    <?php include "profile.php" ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
     $('.message a').click(function(){
       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");

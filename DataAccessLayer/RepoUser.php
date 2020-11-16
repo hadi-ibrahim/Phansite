@@ -29,5 +29,24 @@ class RepoUser {
       return NULL;
   }
 
+  public static function UpdatePicture($user)
+  {
+      $Conn = GetConnection();
+      $Stmt = "UPDATE user SET picPath = '"
+        . $user['picPath']
+        . "' WHERE id= " . $user['id'];
+
+        echo $Stmt;
+        $Result =mysqli_query($Conn, $Stmt);
+      if (isset($Result)){
+        CloseConnection($Conn);
+        return self::Get($user['username']);
+      }
+      else
+        http_response_code(405);
+      CloseConnection($Conn);
+      return NULL;
+  }
+
 }
 ?>

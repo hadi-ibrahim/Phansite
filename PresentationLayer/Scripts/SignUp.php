@@ -15,4 +15,7 @@ if(isset($_POST))
       alert('Unable to create new user. check information.')
       </script>";
 }
+header("Location: ../Views/index.php");
+exit();
+
 ?>
