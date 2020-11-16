@@ -10,11 +10,11 @@
                   echo '<img src="../Assets/img/profilePics/'.$_SESSION['user']['picPath'] .'" >';
                 else echo '<img src="../Assets/img/profilePics/profile.png">';
                   echo '<h1>' . $_SESSION['user']['username'] . '</h1>
-                  <form action="../Scripts/upload.php" method="post" enctype="multipart/form-data">
-                    change profile picture:
+                  <p class="message"> <a> Change Profile Picture </a> </p>
+                  <form class ="change-pic" action="../Scripts/upload.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" value="Upload Image" name="submit">
-                  </form>                  ';
+                    <button type="submit" name="submit"> Change </button>
+                  </form>';
                   ?>
               </div>
             </div>

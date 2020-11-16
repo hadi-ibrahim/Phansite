@@ -9,17 +9,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.login-page {
+.modal-body {
 
   padding: 8% 0 0;
   margin: auto;
   width: 360px;
 
-
-.form {
+.container {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: #000000;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -35,6 +34,10 @@
       padding: 15px;
       box-sizing: border-box;
       font-size: 14px;
+    }
+    img {
+      width:200px;
+      height:200px;
     }
     button {
       font-family: "p5hatty", sans-serif;
@@ -53,14 +56,23 @@
         background: #414141;
       }
     }
+    .change-pic {
+      display: none;
+    }
+    #fileToUpload {
+      color:#1a1a1a;
+    }
     .message {
        font-family: 'Electrolize', sans-serif;
        margin: 15px 0 0;
        color: #b3b3b3;
        font-size: 12px;
        a {
-        color: #252525;
+        color: #DCDCDC	;
         text-decoration: none;
+        &:hover{
+          color:white;
+        }
         }
     }
     .register-form {

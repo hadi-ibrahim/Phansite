@@ -47,7 +47,8 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     SetProfilePicture($_SESSION['user'], $_FILES["fileToUpload"]["name"]);
-    unlink($oldPicture);
+    if($oldPicture!= $target_file)
+      unlink($oldPicture);
   } else {
     echo "Sorry, there was an error uploading your file.";
   }

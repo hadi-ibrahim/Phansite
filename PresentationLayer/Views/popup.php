@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content" >
             <div class="modal-body login-page" id="login">
-                <div class="form">
+                <div class="container">
                   <form class="register-form" method="POST" action="../Scripts/SignUp.php">
                     <input type="text" placeholder="username" name= "username" required="true"/>
                     <input type="password" placeholder="password" name = "password" required="true"/>
