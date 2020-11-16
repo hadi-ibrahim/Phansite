@@ -5,7 +5,7 @@ if(isset($_POST))
 {
     echo "Signing up :.....";
     print_r($_POST);
-    $result = SignUp($_POST['fname'], $_POST['lname'], $_POST['email'],$_POST['pass'], $_POST['username'], NULL ,0, 0);
+    $result = SignUp( $_POST['username'],$_POST['password']);
     if($result)
       echo "<script type='text/javascript'>
       alert('Sign up successful!')

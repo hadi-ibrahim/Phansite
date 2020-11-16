@@ -2,9 +2,9 @@
 session_start();
 
 include(dirname(__DIR__) . "\DataAccessLayer\RepoUser.php");
-function SignUp($FirstName, $LastName, $Email, $Password, $Username, $PicPath, $IsAdmin, $IsVerified)
+function SignUp( $Username,$Password)
 {
-  $user = RepoUser::Create($FirstName, $LastName, $Email, password_hash($Password, PASSWORD_BCRYPT, ['cost' => 10]), $Username, $PicPath, $IsAdmin, $IsVerified);
+  $user = RepoUser::Create($Username, password_hash($Password, PASSWORD_BCRYPT, ['cost' => 10]));
     if($user) {
       $_SESSION['user']= $user;
       return $user;

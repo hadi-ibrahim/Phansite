@@ -10,24 +10,12 @@ class RepoUser {
       return mysqli_fetch_assoc($Result);
   }
 
-  public static function Create($FirstName, $LastName, $Email, $Password, $Username, $PicPath, $IsAdmin,$IsVerified)
+  public static function Create($Username, $Password)
   {
       $Conn = GetConnection();
-      $Stmt = "INSERT INTO user VALUES(NULL,";
-
-        if($FirstName == NULL)
-          $Stmt .= "NULL,";
-        else $Stmt.= "'" .$FirstName . "',";
-        if($LastName == NULL)
-          $Stmt .= "NULL,";
-        else $Stmt.= "'" .$LastName . "',";
-
-        $Stmt.= "'" . $Email    . "', '"
-        . $Password . "', '"
-        . $Username . "', "
-        . "NULL"    . ", '"
-        . $IsAdmin  . "', '"
-        . $IsVerified  . "');";
+      $Stmt = "INSERT INTO user(username, password) VALUES('"
+        . $Username . "', '"
+        . $Password . "');";
 
         echo $Stmt;
         $Result =mysqli_query($Conn, $Stmt);

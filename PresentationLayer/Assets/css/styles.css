@@ -1,0 +1,102 @@
+.rounded-circle .right-shadow {
+  -moz-box-shadow: 15px 15px 5px #ffffff;
+  -webkit-box-shadow: 15px 15px 5px #ffffff;
+  box-shadow: 15px 15px 2px #ffffff;
+}
+.rounded-circle .left-shadow {
+  -moz-box-shadow: 15px 15px 5px #ffffff;
+  -webkit-box-shadow: 15px 15px 5px #ffffff;
+  box-shadow: -15px 15px 2px #ffffff;
+}
+
+.phantom-text {
+  font-family: "Electrolize";
+}
+
+body {
+  color: white;
+  background: url("../img/zigzag.png") center/cover no-repeat, linear-gradient(#4d4d4d, #000000);
+}
+
+.p5 {
+  font-family: "p5hatty";
+  letter-spacing: 2px;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+  background: url("../../assets/img/takeyourheart.png") center/contain no-repeat;
+  height: 2em;
+}
+
+.logo, svg {
+  height: 15em;
+}
+
+.profile {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.hero-section {
+  background: url("../../assets/img/hero2.png") right/cover no-repeat !important;
+}
+
+@media (min-width: 992px) {
+  .hero-section {
+    background: url("../../assets/img/hero2.png") bottom/cover no-repeat !important;
+  }
+}
+nav {
+  padding: 0.5rem;
+  background-color: #080808;
+}
+
+.dropdown-menu.show {
+  background-color: #080808;
+}
+
+.nav-link, .dropdown-item, .dropdown-toggle {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "p5hatty";
+  font-size: 1.5em;
+}
+.nav-link:hover, .dropdown-item:hover, .dropdown-toggle:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #080808;
+  text-decoration: none;
+}
+
+.navbar-brand {
+  background: url("../../assets/img/phantomThievesLogo.png") center/cover no-repeat;
+  width: 50px;
+  height: 50px;
+}
+
+.calling-card {
+  font-family: "Earwig Factory";
+}
+
+.navbar-light .navbar-toggler {
+  color: white;
+}
+
+.section-link:hover {
+  transform: scale(1.2);
+  transition: 0.3s all;
+  cursor: pointer;
+}
+
+@media (max-width: 575px) {
+  .p5 {
+    font-size: 2.9rem;
+    letter-spacing: 1px;
+  }
+}
+footer {
+  height: 3em;
+  padding: 1em 0;
+  background-color: #080808;
+}
+
+/*# sourceMappingURL=styles.css.map */
