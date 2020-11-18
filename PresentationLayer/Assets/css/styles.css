@@ -18,6 +18,10 @@ body {
   background: url("../img/zigzag.png") center/cover no-repeat, linear-gradient(#4d4d4d, #000000);
 }
 
+h1 {
+  font-family: "p5hatty";
+}
+
 .p5 {
   font-family: "p5hatty";
   letter-spacing: 2px;

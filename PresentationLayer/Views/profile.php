@@ -6,6 +6,10 @@
             <div class="modal-body profile-page" id="user-profile">
               <div class="container">
                 <?php
+                if($_SESSION['user']['isVerified'] == 1)
+                  echo '<i class="fas fa-check-circle"  data-toggle="tooltip"
+                           data-placement="bottom" data-html="true" ;
+                           title="Verified"></i>';
                 if($_SESSION['user']['picPath']!= NULL)
                   echo '<img src="../Assets/img/profilePics/'.$_SESSION['user']['picPath'] .'" >';
                 else echo '<img src="../Assets/img/profilePics/profile.png">';
