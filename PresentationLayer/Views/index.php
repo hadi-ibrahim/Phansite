@@ -115,8 +115,16 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-    $('.message a').click(function(){
-      $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    $('.login-page .message a').click(function(){
+      $('.login-page form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+
+    $('.verify-acc-btn').click(function(){
+      $('.verify-acc').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+
+    $('.change-pic-btn').click(function(){
+      $('.change-pic ').animate({height: "toggle", opacity: "toggle"}, "slow");
     });
 
     function scrollToElement(selector) {

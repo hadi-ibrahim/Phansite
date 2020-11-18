@@ -67,6 +67,14 @@
     .change-pic {
       display: none;
     }
+    .verify-acc{
+      display:none;
+      .message{
+        width: 80%;
+        margin:2em auto;
+      }
+    }
+
     #fileToUpload {
       color:#1a1a1a;
     }

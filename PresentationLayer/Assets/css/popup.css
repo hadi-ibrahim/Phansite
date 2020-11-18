@@ -64,6 +64,13 @@
 .modal-body .container .change-pic {
   display: none;
 }
+.modal-body .container .verify-acc {
+  display: none;
+}
+.modal-body .container .verify-acc .message {
+  width: 80%;
+  margin: 2em auto;
+}
 .modal-body .container #fileToUpload {
   color: #1a1a1a;
 }
