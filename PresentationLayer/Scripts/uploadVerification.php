@@ -2,7 +2,7 @@
 require("upload.php");
 require('../../BusinessLogicLayer/profileManagement.php');
 
-$target_dir = "../Assets/img/pendingVerification/"
+$target_dir = "../Assets/img/Verification/"
                 . $_SESSION['user']['username']."/";
   if (!file_exists($target_dir)) {
       mkdir($target_dir, 0777, true);
@@ -14,6 +14,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $uploadOk = 1;
 
 Upload($target_file, $imageFileType, $uploadOk);
+RequestVerification($_SESSION['user'], $file);
 
 header("Location: ../Views/index.php");
 exit();

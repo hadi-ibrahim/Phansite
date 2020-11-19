@@ -1,5 +1,4 @@
 <?php
-include("ConnectionManager.php");
 class RepoUser {
   public static function Get($Username)
   {

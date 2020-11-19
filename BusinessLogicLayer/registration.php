@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-include(dirname(__DIR__) . "\DataAccessLayer\RepoUser.php");
+require_once(dirname(__DIR__) . "\DataAccessLayer\ConnectionManager.php");
+require_once(dirname(__DIR__) . "\DataAccessLayer\RepoUser.php");
 function SignUp( $Username,$Password)
 {
   $user = RepoUser::Create($Username, password_hash($Password, PASSWORD_BCRYPT, ['cost' => 10]));
