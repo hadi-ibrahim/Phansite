@@ -26,8 +26,13 @@
 .modal-body .container .fas {
   position: absolute;
   top: 1em;
-  left: 1em;
   color: #f2f2f2;
+}
+.modal-body .container .fa-check-circle {
+  left: 1em;
+}
+.modal-body .container .fa-user-shield {
+  left: 3em;
 }
 .modal-body .container input {
   font-family: "Electrolize", sans-serif;
