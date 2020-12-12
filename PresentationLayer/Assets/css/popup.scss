@@ -15,6 +15,7 @@
   margin: auto;
   width: 360px;
 
+
 .container {
 
   position: relative;
@@ -26,6 +27,21 @@
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
+  .list-group {
+    max-height: 300px;
+    text-align: left;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .list-group-item {
+    &:hover{
+      background-color: #C0C0C0
+    }
+    color:black;
+    line-height: 50px;
+    text-align: left;
+  }
   .fas {
     position:absolute;
     top:1em;
@@ -37,6 +53,13 @@
   .fa-user-shield{
     left:3em;
   }
+  .fa-check{
+    color: #50C878;
+    right:1em;
+    font-size: 25px;
+  }
+
+
     input {
       font-family: 'Electrolize', sans-serif;
       outline: 0;
@@ -51,6 +74,12 @@
     img {
       width:200px;
       height:200px;
+      &.preview {
+      	width:50px;
+      	height:50px;
+        float: left;
+        margin-right:40px;
+      }
     }
     button {
       font-family: "p5hatty", sans-serif;
@@ -133,6 +162,13 @@
          }
        }
       }
+    }
+  }
+
+  &.admin-pane {
+    width:600px;
+    .container{
+      max-width: 500px
     }
   }
 }

@@ -10,6 +10,11 @@ $('.change-pic-btn').click(function(){
   $('.change-pic ').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
 
+$(document).on("click",".admin-badge",function() {
+  console.log("clicked");
+  $('#profileModal').modal('toggle');
+});
+
 function scrollToElement(selector) {
   let tag = $(selector);
   $('html,body').animate({
@@ -50,7 +55,7 @@ $(".register-form").validate({
         $('input').val("");
         $('.email-validity').text("");
         $('.login-validity').text("");
-        
+
         $.ajax({
             type: 'POST',
             url: '../PHP/services.php',
@@ -162,7 +167,7 @@ $(".view-profile-btn").click( function() {
           html+='<i class="fas fa-check-circle" data-toggle="tooltip" data-placement="bottom" data-html="true"; title="Verified"></i>';
         }
         if(response.user.isAdmin == 1) {
-          html+='<i class="fas fa-user-shield" data-toggle="tooltip" data-placement="bottom" data-html="true" ; title="Admin"></i>';
+          html+='<span data-toggle="modal" data-target="#admin-panel"><i class="fas fa-user-shield admin-badge" data-toggle="tooltip" data-placement="bottom" data-html="true" ; title="Admin"></i> </span>';
         }
 
         $(".badges").html(html);

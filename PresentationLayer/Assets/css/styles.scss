@@ -1,7 +1,7 @@
 input{
 	color: black;
 }
-.hacker-font.rounded-circle {
+.rounded-circle {
 	&.right-shadow {
 		-moz-box-shadow: 15px 15px 5px #ffffff;
 		-webkit-box-shadow: 15px 15px 5px #ffffff;
@@ -149,7 +149,6 @@ nav {
 	}
 
 }
-
 
 footer {
   height:3em ;

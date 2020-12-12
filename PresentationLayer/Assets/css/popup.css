@@ -23,6 +23,21 @@
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+.modal-body .container .list-group {
+  max-height: 300px;
+  text-align: left;
+  margin-bottom: 10px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-body .container .list-group-item {
+  color: black;
+  line-height: 50px;
+  text-align: left;
+}
+.modal-body .container .list-group-item:hover {
+  background-color: #C0C0C0;
+}
 .modal-body .container .fas {
   position: absolute;
   top: 1em;
@@ -33,6 +48,11 @@
 }
 .modal-body .container .fa-user-shield {
   left: 3em;
+}
+.modal-body .container .fa-check {
+  color: #50C878;
+  right: 1em;
+  font-size: 25px;
 }
 .modal-body .container input {
   font-family: "Electrolize", sans-serif;
@@ -48,6 +68,12 @@
 .modal-body .container img {
   width: 200px;
   height: 200px;
+}
+.modal-body .container img.preview {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 40px;
 }
 .modal-body .container button {
   font-family: "p5hatty", sans-serif;
@@ -127,6 +153,12 @@
 }
 .modal-body .container .container .info span .fa {
   color: #EF3B3A;
+}
+.modal-body.admin-pane {
+  width: 600px;
+}
+.modal-body.admin-pane .container {
+  max-width: 500px;
 }
 
 @media (max-width: 360px) {
