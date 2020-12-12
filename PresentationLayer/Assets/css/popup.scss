@@ -10,7 +10,7 @@
 }
 
 .modal-body {
-
+  text-align: center;
   padding: 8% 0 0;
   margin: auto;
   width: 360px;
@@ -22,17 +22,16 @@
   // z-index: 1;
   background: #000000;
   max-width: 360px;
-  margin: 0 auto 100px;
+  max-height: 80vh;
+
+  margin: 0 auto 2em;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
   .list-group {
-    max-height: 300px;
     text-align: left;
     margin-bottom: 10px;
-    overflow:scroll;
-    -webkit-overflow-scrolling: touch;
   }
   .list-group-item {
     &:hover{
@@ -41,6 +40,16 @@
     color:black;
     line-height: 50px;
     text-align: left;
+  }
+
+  .card {
+    color:black;
+    font-family: "p5hatty";
+    margin-bottom: 1em;
+  }
+  .card-footer {
+    font-size: 1em;
+    padding: 0;
   }
   .fas {
     position:absolute;
@@ -60,6 +69,7 @@
   }
 
 
+
     input {
       font-family: 'Electrolize', sans-serif;
       outline: 0;
@@ -74,11 +84,16 @@
     img {
       width:200px;
       height:200px;
-      &.preview {
+      &.profile-preview {
       	width:50px;
       	height:50px;
         float: left;
         margin-right:40px;
+      }
+      &.verification-preview {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
       }
     }
     button {
@@ -144,7 +159,7 @@
         text-align: center;
 
         h1 {
-         margin: 0 0 15px;
+         margin: 0 0 2em;
          padding: 0;
          font-size: 36px;
          font-weight: 300;
@@ -166,14 +181,33 @@
   }
 
   &.admin-pane {
-    width:600px;
+    width:750px;
     .container{
-      max-width: 500px
+      max-width :650px;
+      .row {
+        max-height:50vh;
+        overflow:scroll;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+
+      }
     }
   }
 }
 @media(max-width:360px) {
   .login-page {
     width:90%;
+  }
+}
+
+.verify-user-btn{
+  margin-bottom: 2em !important;
+  padding: 0.6em 2em !important;
+}
+
+#admin-verify-user{
+  .container{
+    background-color: white;
+    color: black;
   }
 }

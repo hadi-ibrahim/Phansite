@@ -13,10 +13,10 @@ function SetProfilePicture($user, $path) {
   $_SESSION['user'] =$user;
 }
 
-function Verify($user) {
+function Verify($username) {
+  $user = RepoUser::GetByUsername($username);
   $user['isVerified'] =1;
   $user = RepoUser::Update($user);
-  $_SESSION['user'] =$user;
 }
 
 function GetPendingVerifications(){

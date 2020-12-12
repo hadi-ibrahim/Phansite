@@ -10,10 +10,11 @@ $('.change-pic-btn').click(function(){
   $('.change-pic ').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
 
-$(document).on("click",".admin-badge",function() {
-  console.log("clicked");
-  $('#profileModal').modal('toggle');
-});
+$('#admin-panel-view-verification').on('hide.bs.modal', function() {
+  console.log("triggered");
+  $('#admin-panel').modal("toggle");
+})
+
 
 function scrollToElement(selector) {
   let tag = $(selector);
@@ -61,7 +62,6 @@ $(".register-form").validate({
             url: '../PHP/services.php',
             data: postForm,
             dataType: 'json',
-
             success: function (response) {
                 if (!response.success) {
                     if (response.error) {
@@ -92,9 +92,6 @@ $(".register-form").validate({
             },
             complete: function () {
                 $('input, .register-form .submit-btn').prop("disabled", false);
-                $("#divLoader").removeClass("loader");
-                $('.overlay').addClass('hidden');
-                console.log("Ajax call completed");
             }
 
         });
@@ -155,7 +152,6 @@ $(".view-profile-btn").click( function() {
       url: '../PHP/services.php',
       data: postForm,
       dataType: 'json',
-
       success: function (response) {
         html ="";
         src="../Assets/img/profilePics/";
@@ -201,7 +197,6 @@ $(".logout-btn-toggle").click( function() {
       url: '../PHP/services.php',
       data: postForm,
       dataType: 'json',
-
       success: function (response) {
         console.log("logged out");
 
@@ -219,6 +214,7 @@ $(".logout-btn-toggle").click( function() {
           console.log("Ajax call error");
           console.log(e);
       }
+
     });
 });
 
@@ -240,7 +236,6 @@ $(".login-btn").click( function(e) {
       url: '../PHP/services.php',
       data: postForm,
       dataType: 'json',
-
       success: function (response) {
         console.log(response);
         if (!response.success) {
@@ -287,7 +282,6 @@ $(".login-btn").click( function(e) {
           cache:false,
           contentType: false,
           processData: false,
-
           success:function(response){
             console.log(response);
             result = JSON.parse(response);
@@ -313,8 +307,8 @@ $(".login-btn").click( function(e) {
             $(".upload-validity").text("Failed to update profile picture");
             console.log("ERROR" + data);
           },
-          complete: function (){
-            $('.profile-page input').val("");
+          complete: function () {
+            $(".profile-page-input").val("");
           }
       });
   }));
@@ -331,7 +325,6 @@ $(".login-btn").click( function(e) {
             cache:false,
             contentType: false,
             processData: false,
-
             success:function(response){
               $(".upload-validity").addClass("valid");
               $(".upload-validity").removeClass("invalid");
@@ -343,11 +336,86 @@ $(".login-btn").click( function(e) {
               $(".upload-validity").html("Failed to send picture for validation");
               console.log("ERROR" + data);
             },
-            complete: function (){
+            complete: function () {
               $('.profile-page input').val("");
             }
         });
     }));
+
+// =================================== admin panel toggle
+    $(document).on("click",".admin-badge",function() {
+      $('#profileModal').modal('toggle');
+      refreshRequests();
+    });
+
+    // =================================== get user verification images
+        $(document).on("click",".user-to-verify",function() {
+          $('#admin-panel').modal('toggle');
+          username =$(this).text();
+
+          $("#admin-panel-view-verification .username-title").html('<span class = "username-value" >' + username + "</span> verification images")
+
+          console.log(username);
+          const postForm = {
+              'action': 'GetAllUserVerificationImages',
+              'username': username
+          };
+          $.ajax({
+              type: 'POST',
+              url: '../PHP/adminservices.php',
+              data: postForm,
+              dataType: 'json',
+              success: function (response) {
+                result = JSON.parse(response.images);
+                $(".all-user-pics").html("");
+
+                result.forEach(function(record) {
+                  if(record != null){
+                    src= '../Assets/img/Verification/'+ record.username + "/" + record.imgPath + '"' ;
+                    html= '<div class="col-sm-4"><div class="card">'
+                     + '<a href = " ' + src + '" target="_blank"><img src=" ' + src + 'class="card-img-top verification-preview" alt="..."> </a>'
+                      +  '<div class="card-footer">'
+                      +  ' <small class="text-muted">3 mins ago</small>'
+                      +  '</div></div></div>';
+
+                      $(".all-user-pics").append(html);
+                    }
+                });
+
+                  console.log("Ajax call success");
+              },
+              error: function (e) {
+                  alert("System currently unavailable, try again later.");
+                  console.log("Ajax call error");
+                  console.log(e);
+              }
+            });
+        });
+
+
+//============================= verify user
+$(".verify-user-btn").click(function(){
+  $('#admin-panel-view-verification').modal('toggle');
+  username= $('.username-value').text();
+  const postForm = {
+      'action': 'verifyUser',
+      'username': username
+  };
+  $.ajax({
+      type: 'POST',
+      url: '../PHP/adminservices.php',
+      data: postForm,
+      dataType: 'json',
+      success: function () {
+        refreshRequests()
+        },
+      error: function (e) {
+          alert("System currently unavailable, try again later.");
+          console.log("Ajax call error");
+          console.log(e);
+      }
+    });
+});
 
 // ============================ check session if logged in
 $(document).ready(function() {
@@ -359,7 +427,6 @@ $(document).ready(function() {
         url: '../PHP/services.php',
         data: postForm,
         dataType: 'json',
-
         success: function (response) {
           console.log(response);
           if (response.success) {
@@ -378,6 +445,46 @@ $(document).ready(function() {
       },
       error: function (e) {
         console.log("No user logged in");
-        }
+      }
       });
   });
+  function refreshRequests() {
+    const postForm = {
+        'action': 'GetAllPendingVerifications',
+    };
+    $.ajax({
+        type: 'POST',
+        url: '../PHP/adminservices.php',
+        data: postForm,
+        dataType: 'json',
+        success: function (response) {
+          result = JSON.parse(response.verifications);
+          $('.list-group').html("");
+
+          result.forEach(function(record) {
+            if(record != null){
+              src= '../Assets/img/profilePics/';
+              if(record.picPath!= null)
+                src+= record.picPath;
+              else src+= "profile.png";
+
+              html='<li class="list-group-item user-to-verify" data-toggle="modal" data-target="#admin-panel-view-verification"><img class="profile-preview" src="'
+                + src + '" />' + record.username ;
+
+              if (record.isVerified == "1") {
+                html += '<i class="fas fa-check"></i>';
+              }
+              html += '</li>'
+              $('.list-group').append(html);
+          }
+          });
+
+            console.log("Ajax call success");
+        },
+        error: function (e) {
+            alert("System currently unavailable, try again later.");
+            console.log("Ajax call error");
+            console.log(e);
+        }
+      });
+  }

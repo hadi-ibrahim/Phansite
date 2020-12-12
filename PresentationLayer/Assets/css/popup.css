@@ -10,6 +10,7 @@
 }
 
 .modal-body {
+  text-align: center;
   padding: 8% 0 0;
   margin: auto;
   width: 360px;
@@ -18,17 +19,15 @@
   position: relative;
   background: #000000;
   max-width: 360px;
-  margin: 0 auto 100px;
+  max-height: 80vh;
+  margin: 0 auto 2em;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .modal-body .container .list-group {
-  max-height: 300px;
   text-align: left;
   margin-bottom: 10px;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 .modal-body .container .list-group-item {
   color: black;
@@ -37,6 +36,15 @@
 }
 .modal-body .container .list-group-item:hover {
   background-color: #C0C0C0;
+}
+.modal-body .container .card {
+  color: black;
+  font-family: "p5hatty";
+  margin-bottom: 1em;
+}
+.modal-body .container .card-footer {
+  font-size: 1em;
+  padding: 0;
 }
 .modal-body .container .fas {
   position: absolute;
@@ -69,11 +77,16 @@
   width: 200px;
   height: 200px;
 }
-.modal-body .container img.preview {
+.modal-body .container img.profile-preview {
   width: 50px;
   height: 50px;
   float: left;
   margin-right: 40px;
+}
+.modal-body .container img.verification-preview {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
 }
 .modal-body .container button {
   font-family: "p5hatty", sans-serif;
@@ -137,7 +150,7 @@
   text-align: center;
 }
 .modal-body .container .container .info h1 {
-  margin: 0 0 15px;
+  margin: 0 0 2em;
   padding: 0;
   font-size: 36px;
   font-weight: 300;
@@ -155,16 +168,31 @@
   color: #EF3B3A;
 }
 .modal-body.admin-pane {
-  width: 600px;
+  width: 750px;
 }
 .modal-body.admin-pane .container {
-  max-width: 500px;
+  max-width: 650px;
+}
+.modal-body.admin-pane .container .row {
+  max-height: 50vh;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 
 @media (max-width: 360px) {
   .login-page {
     width: 90%;
   }
+}
+.verify-user-btn {
+  margin-bottom: 2em !important;
+  padding: 0.6em 2em !important;
+}
+
+#admin-verify-user .container {
+  background-color: white;
+  color: black;
 }
 
 /*# sourceMappingURL=popup.css.map */
