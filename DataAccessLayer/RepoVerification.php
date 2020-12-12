@@ -1,12 +1,31 @@
 <?php
 class RepoVerification {
-  public static function Get($User)
+  public static function GetUserVerificationRequests($Username)
   {
+      $verificationResults = array();
+
       $Conn = GetConnection();
-      $Stmt = "SELECT * FROM verification WHERE idUser = " . $User["id"] ;
+      $user = RepoUser::GetByUsername($Username);
+      $Stmt = "SELECT imgPath, username FROM verification INNER JOIN user ON verification.idUser= user.id
+        WHERE idUser = ". $user['id'] ;
       $Result = mysqli_query($Conn, $Stmt);
       CloseConnection($Conn);
-      return mysqli_fetch_assoc($Result);
+      while ($row = $Result->fetch_object())
+          $verificationResults[] = $row;
+      $Result-> free();
+      return $verificationResults;  }
+
+  public static function GetUsersForVerification()
+  {
+      $verificationResults = array();
+      $Conn = GetConnection();
+      $Stmt = "SELECT * FROM verification GROUP BY IdUser";
+      $Result = mysqli_query($Conn, $Stmt);
+      CloseConnection($Conn);
+      while ($row = $Result->fetch_object())
+          $verificationResults[] = $row;
+        $Result-> free();
+      return $verificationResults;
   }
 
   public static function Create($User, $Path)

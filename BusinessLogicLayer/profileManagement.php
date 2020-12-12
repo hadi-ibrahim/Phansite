@@ -18,3 +18,16 @@ function Verify($user) {
   $user = RepoUser::Update($user);
   $_SESSION['user'] =$user;
 }
+
+function GetPendingVerifications(){
+  $result = RepoVerification::GetUsersForVerification();
+  $users= array();
+  foreach($result as &$value) {
+    $users[] = RepoUser::GetForDisplay($value->idUser);
+  }
+  return json_encode($users);
+}
+
+function GetUserVerificationRequests($username){
+  return json_encode(RepoVerification::GetUserVerificationRequests($username));
+}

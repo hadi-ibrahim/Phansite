@@ -9,6 +9,23 @@ class RepoUser {
       return mysqli_fetch_assoc($Result);
   }
 
+  public static function Get($Id)
+  {
+      $Conn = GetConnection();
+      $Stmt = "SELECT * FROM user WHERE Id = '" . $Id . "'";
+      $Result = mysqli_query($Conn, $Stmt);
+      CloseConnection($Conn);
+      return mysqli_fetch_assoc($Result);
+  }
+  public static function GetForDisplay($Id)
+  {
+      $Conn = GetConnection();
+      $Stmt = "SELECT username, picPath, isVerified FROM user WHERE id = '" . $Id. "'";
+      $Result = mysqli_query($Conn, $Stmt);
+      CloseConnection($Conn);
+      return mysqli_fetch_assoc($Result);
+  }
+
   public static function Create($Username, $Password)
   {
       $Conn = GetConnection();
