@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once(dirname(__DIR__) . "\DataAccessLayer\ConnectionManager.php");
 require_once(dirname(__DIR__) . "\DataAccessLayer\RepoUser.php");
 function SignUp( $Username,$Password)
@@ -16,9 +14,6 @@ function SignUp( $Username,$Password)
 function SignIn($Username , $Password) {
   $user = RepoUser::Get($Username);
   if(!password_verify($Password,$user['password'])) {
-    echo "<script type='text/javascript'>
-    alert('Login failed. Try again')
-    </script>";
     return NULL;
   }
   $_SESSION['user']= $user;
@@ -27,4 +22,11 @@ function SignIn($Username , $Password) {
 
 function LogOut() {
   unset($_SESSION['user']);
+}
+
+function UsernameExist($username) {
+  if (RepoUser::Get($username)== NULL){
+    return False;
+  };
+  return True;
 }

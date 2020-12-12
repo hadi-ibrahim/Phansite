@@ -16,7 +16,6 @@ class RepoUser {
         . $Username . "', '"
         . $Password . "');";
 
-        echo $Stmt;
         $Result =mysqli_query($Conn, $Stmt);
       if (isset($Result)){
         CloseConnection($Conn);
@@ -41,7 +40,6 @@ class RepoUser {
         . $user['username']
         . "' WHERE id= " . $user['id'];
 
-        echo $Stmt;
         $Result =mysqli_query($Conn, $Stmt);
       if (isset($Result)){
         CloseConnection($Conn);

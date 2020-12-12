@@ -5,7 +5,7 @@ LogOut();
 echo "<script type='text/javascript'>
 alert('Logout successful!')
 </script>";
-header("Location: ../Views/index.php");
+header("Location: ../Views/index.html");
 exit();
 
 ?>

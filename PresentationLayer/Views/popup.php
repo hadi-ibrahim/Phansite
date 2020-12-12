@@ -1,25 +1,25 @@
-<?php // TODO: implement login using AJAX ?>
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content" >
             <div class="modal-body login-page" id="login">
                 <div class="container">
-                  <form class="register-form" method="POST" action="../Scripts/SignUp.php">
+                  <form class="register-form" method="POST" action="../PHP/SignUp.php">
+                    <p class="email-validity"></p>
                     <input type="text" placeholder="username" name= "username" required="true"/>
                     <input type="password" placeholder="password" name = "password" required="true"/>
-                    <button type="submit" name="signUPpButton" value="submit">Sign up</button>
+                    <button class = "submit-btn" type="submit" name="signUPpButton" value="submit">Sign up</button>
                     <p class="message">Already registered? <a href="#">Sign In</a></p>
                   </form>
-                  <form class="login-form" method="POST" action="../Scripts/SignIn.php">
+                  <form class="login-form" method="POST" action="../PHP/SignIn.php">
+                    <p class="email-validity"></p>
                     <input type="text" placeholder="username" name = "username"/>
                     <input type="password" placeholder="password" name="password"/>
-                    <button type="submit" name="LoginButton" value="submit" >login</button>
+                    <button class ="login-btn" type="submit" name="LoginButton" value="submit" >login</button>
                     <p class="message">Not registered? <a href="#">Create an account</a></p>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </div>

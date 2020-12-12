@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once(dirname(__DIR__) . "\DataAccessLayer\ConnectionManager.php");
 require_once(dirname(__DIR__) . "\DataAccessLayer\RepoUser.php");
 require_once(dirname(__DIR__) . "\DataAccessLayer\RepoVerification.php");

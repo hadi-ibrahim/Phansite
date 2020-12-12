@@ -12,7 +12,7 @@ if(isset($_POST))
       </script>";
 }
 
-header("Location: ../Views/index.php");
+header("Location: ../Views/index.html");
 exit();
 
 ?>

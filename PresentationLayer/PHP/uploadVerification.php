@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("upload.php");
 require('../../BusinessLogicLayer/profileManagement.php');
 
@@ -16,5 +17,5 @@ $uploadOk = 1;
 Upload($target_file, $imageFileType, $uploadOk);
 RequestVerification($_SESSION['user'], $file);
 
-header("Location: ../Views/index.php");
+header("Location: ../Views/index.html");
 exit();

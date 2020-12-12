@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../Assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Assets/css/Earwig%20Factory.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Electrolize">
+    <link rel="stylesheet" href="../Assets/css/p5hatty.css">
+    <link rel="stylesheet" href="../Assets/css/styles.css">
+    <link rel="stylesheet" href="../Assets/css/popup.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+        <div class="container"><a class="navbar-brand" href="index.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Phorum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Phan-vote</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Phan-request</a></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li id= "login-signup" class="nav-link">
+                      <img class="profile deactivated" />
+                      <a id="dropdownMenuButton" type="button" data-toggle="modal" aria-haspopup="true" aria-expanded="false" data-target="#loginModal">
+                        Login/signup
+                      </a>
+                    </li>
+                    <li id= "profile-selector" class="dropdown deactivated">
+                        <img class= "profile-pic" src="../Assets/img/profilePics/profile.png" />
+                        <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <!-- fill in ajax -->
+                        </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item logout-btn-toggle" >Logout</a>
+                       <a class="dropdown-item view-profile-btn" data-toggle="modal" data-target="#profileModal">View Profile</a>
+                       </div>
+                       </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="d-flex justify-content-center align-items-end masthead text-center hero-section">
+        <div class="masthead-content">
+            <div class="container"><img class="logo" src="../Assets/img/phantomThievesLogo.png">
+                <h1 class="masthead-heading mb-0 calling-card">PHANsiTE</h1>
+                <h2 class="masthead-subheading mb-0 section-link" onclick="scrollToElement('section')"></h2>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid right-shadow section-link" src="../Assets/img/phorum.jpg"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4 p5">Phorum</h2>
+                        <p class="phantom-text">Connect with millions of people around the world, and share your thoughts and opinions about anything you'd like&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5"><img class="rounded-circle img-fluid left-shadow section-link" src="../Assets/img/vote.jpg"></div>
+                </div>
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <h2 class="display-4 p5">Phan-Vote</h2>
+                        <p class="phantom-text">Join others in an opinion debate about the latest controversial issues, and check the general public's point of view</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid right-shadow section-link" src="../Assets/img/phanRequest.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4 p5">Phan-request</h2>
+                        <p class="phantom-text">No more deception, hypocrisy and corruption. Send us your request anonymously to change corrupt hearts<br><br><br><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer >
+        <div class="container">
+            <p class="text-center text-white m-0 small">Copyright&nbsp;© Phansite 2020</p>
+        </div>
+    </footer>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content" >
+                <div class="modal-body login-page" id="login">
+                    <div class="container">
+                      <form class="register-form" method="POST" action="../PHP/SignUp.php">
+                        <p class="email-validity"></p>
+
+                        <input type="text" placeholder="username" name= "username" required="true"/>
+                        <input type="password" placeholder="password" name = "password" required="true"/>
+                        <button class = "submit-btn" type="submit" name="signUPpButton" value="submit">Sign up</button>
+                        <p class="message">Already registered? <a href="#">Sign In</a></p>
+                      </form>
+                      <form class="login-form" method="POST" action="../PHP/SignIn.php">
+                        <p class="login-validity"></p>
+                        <input type="text" placeholder="username" name = "username"/>
+                        <input type="password" placeholder="password" name="password"/>
+                        <button class ="login-btn" type="submit" name="LoginButton" value="submit" >login</button>
+                        <p class="message">Not registered? <a href="#">Create an account</a></p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileCenterTitle"
+               aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content" >
+                      <div class="modal-body profile-page" id="user-profile">
+                        <div class="container">
+                          <div class= "badges">
+                          </div>
+                          <p class="upload-validity"></p>
+
+                          <div class= "profile-in-modal">
+                            <img src="../Assets/img/profilePics/profile.png"/>
+                              <h1 class="profile-username"></h1>
+                          </div>
+                          <p class="profile-notification"></p>
+                          <p class="message"> <a class ="change-pic-btn" href="#"> Change Profile Picture </a> </p>
+                          <form class ="change-pic" action="../PHP/uploadProfile.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="fileToUpload">
+                            <button type="submit" name="submit" class= "upload-profile-btn"> Change </button>
+                          </form>
+                          <div class= "verify-account">
+                            <p class="message verify-acc-btn"> <a href="#"> Verify account </a> </p>
+                            <form class ="verify-acc" action="../PHP/uploadVerification.php" method="post" enctype="multipart/form-data">
+                              <p class = "message"> Upload a picture of your id, an admin will verify it shortly.</p>
+                              <input type="file" name="fileToUpload">
+                              <button type="submit" name="submit" class = "upload-verification-file"> Verify </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script src="../JS/index.js"></script>
+
+    <script>
+
+  </script>
+</body>
+</html>
