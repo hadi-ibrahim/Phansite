@@ -12,7 +12,7 @@ function SignUp( $Username,$Password)
 }
 
 function SignIn($Username , $Password) {
-  $user = RepoUser::Get($Username);
+  $user = RepoUser::GetByUsername($Username);
   if(!password_verify($Password,$user['password'])) {
     return NULL;
   }
@@ -25,7 +25,7 @@ function LogOut() {
 }
 
 function UsernameExist($username) {
-  if (RepoUser::Get($username)== NULL){
+  if (RepoUser::GetByUsername($username)== NULL){
     return False;
   };
   return True;

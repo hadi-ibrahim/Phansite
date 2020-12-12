@@ -1,6 +1,6 @@
 <?php
 class RepoUser {
-  public static function Get($Username)
+  public static function GetByUsername($Username)
   {
       $Conn = GetConnection();
       $Stmt = "SELECT * FROM user WHERE username = '" . $Username . "'";
@@ -19,7 +19,7 @@ class RepoUser {
         $Result =mysqli_query($Conn, $Stmt);
       if (isset($Result)){
         CloseConnection($Conn);
-        return self::Get($Username);
+        return self::GetByUsername($Username);
       }
       else
         http_response_code(405);
@@ -43,7 +43,7 @@ class RepoUser {
         $Result =mysqli_query($Conn, $Stmt);
       if (isset($Result)){
         CloseConnection($Conn);
-        return self::Get($user['username']);
+        return self::GetByUsername($user['username']);
       }
       else
         http_response_code(405);

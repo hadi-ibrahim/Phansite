@@ -42,14 +42,15 @@ $(".register-form").validate({
     },
     submitHandler: function () {
         console.log("Form submit event started");
-        $('input, .email-validity').empty();
-
         const postForm = {
             'username': $('.register-form input[name="username"]').val(),
             'password': $('.register-form input[name="password"]').val(),
             'action': 'signup'
         };
-
+        $('input').val("");
+        $('.email-validity').text("");
+        $('.login-validity').text("");
+        
         $.ajax({
             type: 'POST',
             url: '../PHP/services.php',
@@ -104,7 +105,6 @@ $('.register-form input[name="username"]').blur(function() {
       'username': $('.register-form input[name="username"]').val(),
       'action': 'validateUsername'
   };
-  console.log("focus out event !")
 
   $.ajax({
       type: 'POST',
@@ -220,12 +220,16 @@ $(".logout-btn-toggle").click( function() {
 // ================= login =================//
 $(".login-btn").click( function(e) {
   e.preventDefault();
-  console.log("LOGIN INITIATED");
   const postForm = {
     'username': $('.login-form input[name="username"]').val(),
     'password': $('.login-form input[name="password"]').val(),
     'action': 'login'
     };
+    $('input').val("");
+    $('.email-validity').text("");
+    $('.login-validity').text("");
+
+
   $.ajax({
       type: 'POST',
       url: '../PHP/services.php',

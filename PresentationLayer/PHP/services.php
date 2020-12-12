@@ -105,7 +105,7 @@ if(isset($_POST)){
     $form_data = array();
     $error= '';
 
-    $user = RepoUser::Get($_SESSION['user']['username']);
+    $user = RepoUser::GetByUsername($_SESSION['user']['username']);
     if($user == NULL) {
       $error = "Error: couldn't load logged in user";
     }
