@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1">
-                    <div class="p-5"><img class="rounded-circle img-fluid left-shadow section-link" src="../Assets/img/vote.jpg"></div>
+                    <div class="p-5 voting-polls-btn" data-toggle="modal" data-target="#voting-polls-panel"><img class="rounded-circle img-fluid left-shadow section-link" src="../Assets/img/vote.jpg"></div>
                 </div>
                 <div class="col-lg-6 order-lg-2">
                     <div class="p-5">
@@ -175,27 +175,44 @@
                                 </div>
                               </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                      <div class="modal fade" id="admin-panel-view-verification" tabindex="-1" role="dialog" aria-labelledby="adminPanelCenterTitle"
+                           aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content" >
+                                <div class="modal-body admin-pane" id="admin-verify-user">
+                                  <div class="container">
+                                    <h1 class="username-title">User verifications</h1>
+                                    <div class="row all-user-pics">
+                                    </div>
+                                  </div>
+                                  <button type="button" class="btn btn-dark verify-user-btn">Verify</button>
+                              </div>
                           </div>
                         </div>
                       </div>
-                      <div class="modal fade" id="admin-panel-view-verification" tabindex="-1" role="dialog" aria-labelledby="adminPanelCenterTitle"
+
+                      <div class="modal fade" id="voting-polls-panel" tabindex="-1" role="dialog" aria-labelledby="votingPollsCenterTitle"
                            aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                               <div class="modal-content" >
-                                  <div class="modal-body admin-pane" id="admin-verify-user">
+                                  <div class="modal-body admin-pane" id="voting-polls">
                                     <div class="container">
-                                      <h1 class="username-title">User verifications</h1>
-                                      <div class="row all-user-pics">
+                                      <h1>Voting Polls</h1>
+                                          <ul class="list-group">
+
+                                          </ul>
+                                        </div>
                                       </div>
                                     </div>
-                                    <button type="button" class="btn btn-dark verify-user-btn">Verify</button>
-
                                   </div>
-                                </div>
                               </div>
-                            </div>
-                            <div class="overlay hidden"></div>
-                            <div id="divLoader"></div>
+                          </div>
+                      </div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

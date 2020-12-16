@@ -9,11 +9,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.list-group-item {
+  &:hover{
+    background-color: #C0C0C0
+  }
+}
+#admin{
+  .list-group {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .list-group-item {
+
+    color:black;
+    line-height: 50px;
+    text-align: left;
+  }
+  .fa-check{
+    color: #50C878;
+    right:1em;
+    font-size: 25px;
+  }
+}
+#voting-polls {
+  .list-group {
+    text-align: left;
+  }
+  .list-group-item {
+    font-family: "p5hatty";
+    font-size: 1.4em;
+    color:black;
+  }
+  .fa-check{
+    color: #50C878;
+    padding-right: 10px;
+    font-size: 20px;
+  }
+  .fa-times {
+    color: #ff6633;
+    padding-right: 16px;
+    font-size: 20px;
+  }
+}
+
+#user-profile{
+  .fas {
+    position:absolute;
+    top:1em;
+    color: #f2f2f2;
+  }
+}
+
 .modal-body {
   text-align: center;
   padding: 8% 0 0;
   margin: auto;
   width: 360px;
+
 
 
 .container {
@@ -29,19 +81,6 @@
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
-  .list-group {
-    text-align: left;
-    margin-bottom: 10px;
-  }
-  .list-group-item {
-    &:hover{
-      background-color: #C0C0C0
-    }
-    color:black;
-    line-height: 50px;
-    text-align: left;
-  }
-
   .card {
     color:black;
     font-family: "p5hatty";
@@ -51,22 +90,14 @@
     font-size: 1em;
     padding: 0;
   }
-  .fas {
-    position:absolute;
-    top:1em;
-    color: #f2f2f2;
-  }
+
   .fa-check-circle {
     left:1em;
   }
   .fa-user-shield{
     left:3em;
   }
-  .fa-check{
-    color: #50C878;
-    right:1em;
-    font-size: 25px;
-  }
+
 
 
 

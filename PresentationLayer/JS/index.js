@@ -362,7 +362,7 @@ $(".login-btn").click( function(e) {
           };
           $.ajax({
               type: 'POST',
-              url: '../PHP/adminservices.php',
+              url: '../PHP/adminServices.php',
               data: postForm,
               dataType: 'json',
               success: function (response) {
@@ -373,10 +373,7 @@ $(".login-btn").click( function(e) {
                   if(record != null){
                     src= '../Assets/img/Verification/'+ record.username + "/" + record.imgPath + '"' ;
                     html= '<div class="col-sm-4"><div class="card">'
-                     + '<a href = " ' + src + '" target="_blank"><img src=" ' + src + 'class="card-img-top verification-preview" alt="..."> </a>'
-                      +  '<div class="card-footer">'
-                      +  ' <small class="text-muted">3 mins ago</small>'
-                      +  '</div></div></div>';
+                     + '<a href = " ' + src + '" target="_blank"><img src=" ' + src + 'class="card-img-top verification-preview" alt="..."> </a>';
 
                       $(".all-user-pics").append(html);
                     }
@@ -403,7 +400,7 @@ $(".verify-user-btn").click(function(){
   };
   $.ajax({
       type: 'POST',
-      url: '../PHP/adminservices.php',
+      url: '../PHP/adminServices.php',
       data: postForm,
       dataType: 'json',
       success: function () {
@@ -448,18 +445,20 @@ $(document).ready(function() {
       }
       });
   });
+
+  // ============================= get All verification requests
   function refreshRequests() {
     const postForm = {
         'action': 'GetAllPendingVerifications',
     };
     $.ajax({
         type: 'POST',
-        url: '../PHP/adminservices.php',
+        url: '../PHP/adminServices.php',
         data: postForm,
         dataType: 'json',
         success: function (response) {
           result = JSON.parse(response.verifications);
-          $('.list-group').html("");
+          $('#admin .list-group').html("");
 
           result.forEach(function(record) {
             if(record != null){
@@ -475,7 +474,7 @@ $(document).ready(function() {
                 html += '<i class="fas fa-check"></i>';
               }
               html += '</li>'
-              $('.list-group').append(html);
+              $('#admin .list-group').append(html);
           }
           });
 
@@ -487,4 +486,58 @@ $(document).ready(function() {
             console.log(e);
         }
       });
-  }
+    }
+
+      // ======================== get all question poles
+      $(".voting-polls-btn").click(function() {
+        const postForm = {
+            'action': 'GetAllVotingPolls',
+        };
+        $.ajax({
+            type: 'POST',
+            url: '../PHP/services.php',
+            data: postForm,
+            dataType: 'json',
+            success: function (response) {
+              result = JSON.parse(response.polls);
+              $('#voting-polls .list-group').html("");
+
+              result.forEach(function(votePoll) {
+                  topic = (votePoll['topic']);
+                  total = parseInt(votePoll['supporters']) + parseInt(votePoll['opposed']);
+
+                  console.log("total: " + total + "   supporters: " + votePoll['supporters'] )
+                  if(total!=0){
+                    supportersPerCent = (votePoll['supporters'] / total) * 100;
+                    opposedPerCent = (votePoll['opposed'] / total) * 100;
+                  }
+                  else {
+                    supportersPerCent=50;
+                    opposedPerCent = 50;
+                  }
+
+
+                  html='<li class="list-group-item">'
+                      +   '<div class="row justify-content-between">'
+                      +    '<div class="col-10 text-center align-self-center">'
+                      +      '<p>' + topic + '</p>'
+                      +    '</div>'
+                      +    '<div class="col-2 justify-content-between">'
+                      +     '<p><i class="fas fa-check"></i>' + supportersPerCent + '</p>'
+                      +     '<p><i class="fas fa-times"></i>' + opposedPerCent    + '</p>'
+                      +   '</div>'
+                      +  '</div>'
+                      + '</li>'
+
+                  $('#voting-polls .list-group').append(html);
+              })
+
+
+            },
+            error: function (e) {
+                alert("System currently unavailable, try again later.");
+                console.log("Ajax call error");
+                console.log(e);
+            }
+      })
+  });

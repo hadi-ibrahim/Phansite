@@ -35,7 +35,6 @@ class RepoVerification {
         . $User['id'] . ", '"
         . $Path . "');";
 
-        echo $Stmt;
         $Result =mysqli_query($Conn, $Stmt);
       if (isset($Result)){
         CloseConnection($Conn);

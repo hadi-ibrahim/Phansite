@@ -3,6 +3,8 @@ session_start();
 require("upload.php");
 require('../../BusinessLogicLayer/registration.php');
 require('../../BusinessLogicLayer/profileManagement.php');
+require('../../BusinessLogicLayer/votingManagement.php');
+
 
 if(isset($_POST)){
   // ================================ signup
@@ -197,6 +199,30 @@ else if($_POST["action"] =="login") {
       }
       else {
         $error ="Could not upload file. Try again";
+      }
+
+      if (strlen($error) > 0) {
+          $form_data['success'] = false;
+          $form_data['error'] = $error;
+      }
+
+      echo json_encode($form_data);
+    }
+
+    // ================================   get all voting polls
+    else if($_POST['action'] == "GetAllVotingPolls") {
+
+      $form_data = array();
+      $error= '';
+
+      $votingPolls= GetVotingPolls();
+
+      if($votingPolls == NULL) {
+        $error = "Error: couldn't load  pending verification";
+      }
+      else {
+        $form_data['polls'] = $votingPolls;
+        $form_data['success'] = true;
       }
 
       if (strlen($error) > 0) {
