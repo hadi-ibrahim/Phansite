@@ -11,8 +11,10 @@ $('.change-pic-btn').click(function(){
 });
 
 $('#admin-panel-view-verification').on('hide.bs.modal', function() {
-  console.log("triggered");
   $('#admin-panel').modal("toggle");
+})
+$('#vote-panel').on('hide.bs.modal', function() {
+  $('#voting-polls-panel').modal("toggle");
 })
 
 
@@ -517,7 +519,7 @@ $(document).ready(function() {
                   }
 
 
-                  html='<li class="list-group-item">'
+                  html='<li class="list-group-item vote-poll" data-toggle="modal" data-target="#vote-panel">'
                       +   '<div class="row justify-content-between">'
                       +    '<div class="col-10 text-center align-self-center">'
                       +      '<p>' + topic + '</p>'
@@ -541,3 +543,7 @@ $(document).ready(function() {
             }
       })
   });
+  $(document).on("click",".vote-poll",function() {
+    $('#voting-polls-panel').modal('toggle');
+
+  })
