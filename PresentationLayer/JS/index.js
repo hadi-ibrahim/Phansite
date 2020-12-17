@@ -19,6 +19,9 @@ $('#vote-panel').on('hide.bs.modal', function() {
 $('#voting-polls-panel').on('show.bs.modal', function() {
   getAllVotePolls();
 })
+$('#profileModal').on('show.bs.modal', function() {
+  refreshProfile();
+})
 
 
 function scrollToElement(selector) {
@@ -149,6 +152,10 @@ $('.register-form input[name="username"]').blur(function() {
 
 // ============ view profile  ===============//
 $(".view-profile-btn").click( function() {
+  refreshProfile();
+});
+
+function refreshProfile(){
   const postForm = {
       'action': 'GetSelfProfile',
   };
@@ -189,7 +196,7 @@ $(".view-profile-btn").click( function() {
           console.log(e);
       }
     });
-});
+}
 
 
 // =============== logout =================//
