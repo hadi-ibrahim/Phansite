@@ -156,6 +156,8 @@ $(".view-profile-btn").click( function() {
 });
 
 function refreshProfile(){
+  $(".upload-validity").html("");
+
   const postForm = {
       'action': 'GetSelfProfile',
   };
@@ -173,6 +175,9 @@ function refreshProfile(){
         if(response.user.isVerified == 1 ) {
           $(".verify-account").addClass("deactivated");
           html+='<i class="fas fa-check-circle" data-toggle="tooltip" data-placement="bottom" data-html="true"; title="Verified"></i>';
+        }
+        if(response.user.isVerified == 0){
+          $(".verify-account").removeClass("deactivated");
         }
         if(response.user.isAdmin == 1) {
           html+='<span data-toggle="modal" data-target="#admin-panel"><i class="fas fa-user-shield admin-badge" data-toggle="tooltip" data-placement="bottom" data-html="true" ; title="Admin"></i> </span>';
@@ -573,8 +578,11 @@ $(document).ready(function() {
       dataType: 'json',
       success: function (response) {
         console.log(response);
-        if(response.isEligible == "1")
+        if(response.isEligible == "1"){
           $(".vote-btns").removeClass("deactivated")
+          $("#vote-panel .message").text("");
+
+        }
         else {
           $(".vote-btns").addClass("deactivated")
           if(response.voted == "1")
