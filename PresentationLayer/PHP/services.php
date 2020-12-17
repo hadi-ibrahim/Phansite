@@ -22,7 +22,7 @@ if(isset($_POST)){
     else if (strlen($password) < 7 || strlen($password) > 70 )
       $error="Password must be between 7 and 70 characters.";
     else if(UsernameExist($username)) {
-      $error="Email already in use.";
+      $error="Username already in use.";
     }
     else {
       $result = SignUp($username, $password);
@@ -218,7 +218,7 @@ else if($_POST["action"] =="login") {
       $votingPolls= GetVotingPolls();
 
       if($votingPolls == NULL) {
-        $error = "Error: couldn't load  pending verification";
+        $error = "Error: couldn't load voting polls";
       }
       else {
         $form_data['polls'] = $votingPolls;
@@ -231,6 +231,66 @@ else if($_POST["action"] =="login") {
       }
 
       echo json_encode($form_data);
+    }
+
+
+ // ========================================== get vote panel
+    else if ($_POST['action'] == "GetVotePanel") {
+
+            $form_data = array();
+            $error= '';
+            if(isset($_SESSION['user'])){
+              $voteInfo= GetVoteInfo($_SESSION['user'], $_POST['topic']);
+
+              if($voteInfo == NULL) {
+                $error = "Error: couldn't load voting poll";
+              }
+              else {
+                $form_data['isEligible'] = $voteInfo['isEligible'];
+                $form_data['voted'] = $voteInfo['voted'];
+                $form_data['success'] = true;
+              }
+            }
+            else $form_data['error']  = "need to be signed in to vote";
+
+            if (strlen($error) > 0) {
+                $form_data['success'] = false;
+                $form_data['error'] = $error;
+            }
+
+            echo json_encode($form_data);
+    }
+
+    // ============================= vote
+    else if ($_POST['action'] == "vote") {
+      $form_data = array();
+      $error= '';
+
+      $vote =(object)[];
+      $vote->idUser = $_SESSION['user']['id'];
+      $vote->vote =$_POST['vote'];
+      $vote->topic = $_POST['topic'];
+
+
+      $poll = Vote($vote);
+      $supporters= GetVotingPollVoteCount($poll, "1");
+      $opposers= GetVotingPollVoteCount($poll, "0");
+
+      if($poll == NULL) {
+        $error = "Error: couldn't create vote";
+      }
+      else {
+        $form_data['supporters'] = $supporters;
+        $form_data['opposers'] = $opposers;
+        $form_data['success'] = true;
+      }
+
+      if (strlen($error) > 0) {
+          $form_data['success'] = false;
+          $form_data['error'] = $error;
+      }
+      echo json_encode($form_data);
+
     }
 }
 

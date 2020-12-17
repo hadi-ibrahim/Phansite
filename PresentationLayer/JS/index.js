@@ -16,6 +16,9 @@ $('#admin-panel-view-verification').on('hide.bs.modal', function() {
 $('#vote-panel').on('hide.bs.modal', function() {
   $('#voting-polls-panel').modal("toggle");
 })
+$('#voting-polls-panel').on('show.bs.modal', function() {
+  getAllVotePolls();
+})
 
 
 function scrollToElement(selector) {
@@ -491,7 +494,7 @@ $(document).ready(function() {
     }
 
       // ======================== get all question poles
-      $(".voting-polls-btn").click(function() {
+      function getAllVotePolls() {
         const postForm = {
             'action': 'GetAllVotingPolls',
         };
@@ -508,10 +511,9 @@ $(document).ready(function() {
                   topic = (votePoll['topic']);
                   total = parseInt(votePoll['supporters']) + parseInt(votePoll['opposed']);
 
-                  console.log("total: " + total + "   supporters: " + votePoll['supporters'] )
                   if(total!=0){
-                    supportersPerCent = (votePoll['supporters'] / total) * 100;
-                    opposedPerCent = (votePoll['opposed'] / total) * 100;
+                    supportersPerCent = parseInt(votePoll['supporters'] / total * 100);
+                    opposedPerCent = 100 - supportersPerCent;
                   }
                   else {
                     supportersPerCent=50;
@@ -522,10 +524,10 @@ $(document).ready(function() {
                   html='<li class="list-group-item vote-poll" data-toggle="modal" data-target="#vote-panel">'
                       +   '<div class="row justify-content-between">'
                       +    '<div class="col-10 text-center align-self-center">'
-                      +      '<p>' + topic + '</p>'
+                      +      '<p class = "topic">' + topic + '</p>'
                       +    '</div>'
                       +    '<div class="col-2 justify-content-between">'
-                      +     '<p><i class="fas fa-check"></i>' + supportersPerCent + '</p>'
+                      +     '<p class = "supporters-percent"><i class="fas fa-check"></i>' + supportersPerCent + '</p>'
                       +     '<p><i class="fas fa-times"></i>' + opposedPerCent    + '</p>'
                       +   '</div>'
                       +  '</div>'
@@ -542,8 +544,95 @@ $(document).ready(function() {
                 console.log(e);
             }
       })
-  });
+      }
+      $(".voting-polls-btn").click(function() {
+        getAllVotePolls()
+      });
+
+  // ==================================== get vote panel
   $(document).on("click",".vote-poll",function() {
     $('#voting-polls-panel').modal('toggle');
+    topic = $(this).find(".topic").text();
+    console.log(topic);
+    const postForm = {
+        'action': 'GetVotePanel',
+        'topic' : topic
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '../PHP/services.php',
+      data: postForm,
+      dataType: 'json',
+      success: function (response) {
+        console.log(response);
+        if(response.isEligible == "1")
+          $(".vote-btns").removeClass("deactivated")
+        else {
+          $(".vote-btns").addClass("deactivated")
+          if(response.voted == "1")
+            $("#vote-panel .message").text("Already voted for this poll.");
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log(xhr);
+      }
+
+    })
+
+    supportersPercent= parseInt($(this).find(".supporters-percent").text());
+    opposedPercent  = 100 - supportersPercent;
+    $('.question').text(topic);
+    $(".progress-bar-success").text(supportersPercent + "% Support")
+    $(".progress-bar-success").css("width", supportersPercent+"%")
+
+    $(".progress-bar-danger").text(opposedPercent + "% Opposed")
+    $(".progress-bar-danger").css("width", opposedPercent+"%")
 
   })
+
+$(".support-btn").click(function(){
+  votePoll("1");
+})
+
+$(".oppose-btn").click(function(){
+  votePoll("0");
+})
+
+  function votePoll(vote) {
+
+    topic = $(".question").text();
+
+    const postForm = {
+        'action': 'vote',
+        'vote': vote,
+        'topic': topic
+    };
+    $.ajax({
+        type: 'POST',
+        url: '../PHP/services.php',
+        data: postForm,
+        dataType: 'json',
+        success: function (response) {
+          console.log(response);
+          supporters= parseInt(response.supporters);
+          opposed  = parseInt(response.opposers);
+          total =supporters +opposed;
+          supportersPercent = parseInt(supporters /total * 100);
+          opposedPercent =100 - supportersPercent;
+          $(".progress-bar-success").text(supportersPercent + "% Support")
+          $(".progress-bar-success").css("width", supportersPercent+"%")
+
+          $(".progress-bar-danger").text(opposedPercent + "% Opposed")
+          $(".progress-bar-danger").css("width", opposedPercent+"%")
+            $(".vote-poll .message").text("Vote successful");
+            $(".vote-btns").addClass("deactivated");
+
+          },
+        error: function (e) {
+            alert("System currently unavailable, try again later.");
+            console.log("Ajax call error");
+            console.log(e);
+        }
+      });
+  }

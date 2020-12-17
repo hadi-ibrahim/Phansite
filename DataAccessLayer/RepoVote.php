@@ -29,8 +29,8 @@ class RepoVote {
   {
       $Conn = GetConnection();
 
-      $Stmt = "INSERT INTO vote (idUser, idVotingPoll, vote) VALUES(" . $vote['idUser']
-        . ", " . $vote['idVotingPoll'] . "," . $vote['vote'] .  " )";
+      $Stmt = "INSERT INTO vote (idUser, idVotingPoll, vote) VALUES(" . $vote->idUser . ", "
+         . $vote->idVotingPoll . ", " . $vote->vote .  " )";
       $Result =mysqli_query($Conn, $Stmt);
       if (isset($Result)){
         CloseConnection($Conn);
@@ -41,6 +41,18 @@ class RepoVote {
       CloseConnection($Conn);
       return False;
   }
+  public static function UserVotedToPoll($user, $poll)
+   {
 
+     $Conn = GetConnection();
+     $idUser = intval($user['id']);
+     $idPoll = intval($poll['id']);
+     $Stmt = "SELECT * FROM vote WHERE idUser = " .  $idUser . " AND idVotingPoll = " . $idPoll ;
+     $Result = mysqli_query($Conn, $Stmt);
+     CloseConnection($Conn);
+     return $Result->fetch_object();
+  }
 }
+
+
 ?>

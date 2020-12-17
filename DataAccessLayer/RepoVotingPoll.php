@@ -1,5 +1,15 @@
 <?php
 class RepoVotingPoll {
+
+  public static function GetVotingPollByTopic($topic) {
+
+    $Conn = GetConnection();
+    $Stmt = "SELECT * FROM votingpoll WHERE topic = '" . $topic . "'";
+    $Result = mysqli_query($Conn, $Stmt);
+    CloseConnection($Conn);
+    return mysqli_fetch_assoc($Result);
+  }
+
   public static function GetVotingPolls()
   {
       $votingPolls = array();

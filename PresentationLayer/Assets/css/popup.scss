@@ -14,6 +14,21 @@
     background-color: #C0C0C0
   }
 }
+
+.vote-btns{
+  font-family: "Earwig Factory";
+  font-size: 1.8em;
+  .support-btn{
+    &:hover {
+      font-size: 1.1em;
+    }
+  }
+  .oppose-btn{
+    &:hover {
+      font-size: 1.1em;
+    }
+  }
+}
 #admin{
   .list-group {
     text-align: left;
@@ -27,6 +42,7 @@
   }
   .fa-check{
     color: #50C878;
+    float: right;
     right:1em;
     font-size: 25px;
   }
@@ -66,7 +82,18 @@
   margin: auto;
   width: 360px;
 
-
+.progress {
+  height:2em;
+}
+.progress-bar {
+  color: black;
+  &-success{
+    background-color: #50C878;
+  }
+  &-danger{
+    background-color: #FF6633;
+  }
+}
 
 .container {
 
@@ -240,5 +267,10 @@
   .container{
     background-color: white;
     color: black;
+  }
+}
+#vote-panel{
+  .hide-scroll {
+    overflow: hidden!important;
   }
 }

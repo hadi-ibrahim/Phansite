@@ -13,6 +13,17 @@
   background-color: #C0C0C0;
 }
 
+.vote-btns {
+  font-family: "Earwig Factory";
+  font-size: 1.8em;
+}
+.vote-btns .support-btn:hover {
+  font-size: 1.1em;
+}
+.vote-btns .oppose-btn:hover {
+  font-size: 1.1em;
+}
+
 #admin .list-group {
   text-align: left;
   margin-bottom: 10px;
@@ -24,6 +35,7 @@
 }
 #admin .fa-check {
   color: #50C878;
+  float: right;
   right: 1em;
   font-size: 25px;
 }
@@ -58,6 +70,18 @@
   padding: 8% 0 0;
   margin: auto;
   width: 360px;
+}
+.modal-body .progress {
+  height: 2em;
+}
+.modal-body .progress-bar {
+  color: black;
+}
+.modal-body .progress-bar-success {
+  background-color: #50C878;
+}
+.modal-body .progress-bar-danger {
+  background-color: #FF6633;
 }
 .modal-body .container {
   position: relative;
@@ -215,6 +239,10 @@
 #admin-verify-user .container {
   background-color: white;
   color: black;
+}
+
+#vote-panel .hide-scroll {
+  overflow: hidden !important;
 }
 
 /*# sourceMappingURL=popup.css.map */
